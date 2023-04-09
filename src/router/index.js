@@ -26,6 +26,14 @@ const routes = [
     component: () => import('@/views/message/message.vue')
   },
   {
+    name: 'city',
+    path: '/city',
+    component: () => import('@/views/city/city.vue'),
+    meta: {
+      hideTabBar: true
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/home'
   }

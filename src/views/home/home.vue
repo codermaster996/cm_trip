@@ -1,20 +1,21 @@
 <script setup>
-  import homeNavBar from "./cpns/home-nav-bar.vue"
+  import HomeNavBar from "./cpns/home-nav-bar.vue"
+  import HomeSerchBox from "./cpns/home-serch-box.vue"
+
+  import useHomeStore from "@/stores/modules/home"
+
+  // 发送网络请求
+  const homeStore = useHomeStore()
+  homeStore.fetchHotSuggestData()
 </script>
 
 <template>
   <div class="home">
-    <home-nav-bar></home-nav-bar>
+    <home-nav-bar />
     <div class="banner">
       <img src="@/assets/img/home/banner.webp" alt="" />
     </div>
-    <div class="location">
-      <div class="city">江苏</div>
-      <div class="position">
-        <span class="text">我的位置</span>
-        <img src="@/assets/img/home/icon_location.png" alt="" />
-      </div>
-    </div>
+    <home-serch-box />
   </div>
 </template>
 
@@ -22,33 +23,6 @@
   .banner {
     img {
       width: 100%;
-    }
-  }
-
-  .location {
-    display: flex;
-    align-items: center;
-    height: 44px;
-    padding: 0 20px;
-
-    .city {
-      flex: 1;
-    }
-
-    .position {
-      display: flex;
-      align-items: center;
-      width: 74px;
-
-      .text {
-        font-size: 12px;
-      }
-
-      img {
-        margin-left: 5px;
-        width: 18px;
-        height: 18px;
-      }
     }
   }
 </style>
