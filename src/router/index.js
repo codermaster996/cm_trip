@@ -1,49 +1,61 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router"
 
 const routes = [
   {
-    path: '/',
-    redirect: '/home'
+    path: "/",
+    redirect: "/home",
   },
   {
-    name: 'name',
-    path: '/home',
-    component: () => import('@/views/home/home.vue')
+    name: "name",
+    path: "/home",
+    component: () => import("@/views/home/home.vue"),
   },
   {
-    name: 'fover',
-    path: '/favor',
-    component: () => import('@/views/favor/favor.vue')
+    name: "fover",
+    path: "/favor",
+    component: () => import("@/views/favor/favor.vue"),
   },
   {
-    name: 'order',
-    path: '/order',
-    component: () => import('@/views/order/order.vue')
+    name: "order",
+    path: "/order",
+    component: () => import("@/views/order/order.vue"),
   },
   {
-    name: 'message',
-    path: '/message',
-    component: () => import('@/views/message/message.vue')
+    name: "message",
+    path: "/message",
+    component: () => import("@/views/message/message.vue"),
   },
   {
-    name: 'city',
-    path: '/city',
-    component: () => import('@/views/city/city.vue'),
+    name: "city",
+    path: "/city",
+    component: () => import("@/views/city/city.vue"),
     meta: {
-      hideTabBar: true
-    }
+      hideTabBar: true,
+    },
   },
   {
-    path: '/:pathMatch(.*)*',
-    redirect: '/home'
-  }
+    name: "search",
+    path: "/search",
+    component: () => import("@/views/search/search.vue"),
+  },
+  {
+    name: "demo",
+    path: "/demo",
+    component: () => import("@/views/demo/demo.vue"),
+    meta: {
+      hideTabBar: true,
+    },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/home",
+  },
 ]
-
 
 const router = createRouter({
   history: createWebHashHistory(),
   // 映射关系: path -> component
-  routes
+  routes,
 })
 
 export default router
