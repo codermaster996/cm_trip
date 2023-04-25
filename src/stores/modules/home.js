@@ -22,6 +22,8 @@ const useHomeStore = defineStore("home", {
       const res = await getHomeHouselist(this.currentPage)
       this.houselist = [...this.houselist, ...res.data]
       // this.houselist.push(...res.data)
+      // console.log(this.houselist)
+      if (res.data.length < 20 || res.data == "") return
       this.currentPage++
     },
   },

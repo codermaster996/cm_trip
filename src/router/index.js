@@ -6,27 +6,22 @@ const routes = [
     redirect: "/home",
   },
   {
-    name: "name",
     path: "/home",
     component: () => import("@/views/home/home.vue"),
   },
   {
-    name: "fover",
     path: "/favor",
     component: () => import("@/views/favor/favor.vue"),
   },
   {
-    name: "order",
     path: "/order",
     component: () => import("@/views/order/order.vue"),
   },
   {
-    name: "message",
     path: "/message",
     component: () => import("@/views/message/message.vue"),
   },
   {
-    name: "city",
     path: "/city",
     component: () => import("@/views/city/city.vue"),
     meta: {
@@ -34,14 +29,15 @@ const routes = [
     },
   },
   {
-    name: "search",
     path: "/search",
     component: () => import("@/views/search/search.vue"),
+    meta: {
+      hideTabBar: true,
+    },
   },
   {
-    name: "demo",
-    path: "/demo",
-    component: () => import("@/views/demo/demo.vue"),
+    path: "/detail/:id",
+    component: () => import("@/views/detail/detail.vue"),
     meta: {
       hideTabBar: true,
     },

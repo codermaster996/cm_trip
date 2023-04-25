@@ -1,6 +1,9 @@
-import axios from "axios";
+import axios from "axios"
 
 import { BASE_URL, TIMEOUT } from "./config"
+import useMainStore from "@/stores/modules/main"
+
+const mainStore = useMainStore()
 
 class DSRequest {
   constructor(baseURL, timeout = 10000) {
@@ -8,15 +11,39 @@ class DSRequest {
       baseURL,
       timeout,
     })
+
+    this.instance.interceptors.request.use(
+      (config) => {
+        mainStore.isLoading = true
+        return config
+      },
+      (err) => {
+        return err
+      }
+    )
+
+    this.instance.interceptors.response.use(
+      (res) => {
+        mainStore.isLoading = false
+        return res
+      },
+      (err) => {
+        mainStore.isLoading = false
+        return err
+      }
+    )
   }
 
   request(confing) {
     return new Promise((resolve, reject) => {
-      this.instance.request(confing).then(res => {
-        resolve(res.data)
-      }).catch(err => {
-        reject(err)
-      })
+      this.instance
+        .request(confing)
+        .then((res) => {
+          resolve(res.data)
+        })
+        .catch((err) => {
+          reject(err)
+        })
     })
   }
 
