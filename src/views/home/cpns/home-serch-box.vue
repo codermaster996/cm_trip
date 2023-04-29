@@ -91,8 +91,8 @@ const searchBtnClick = () => {
     <!-- 位置信息 -->
     <div class="location bottom-gray-line">
       <div class="city" @click="cityClick">{{ currentCity.cityName }}</div>
-      <div class="position">
-        <span class="text" @click="positionClick"> 我的位置 </span>
+      <div class="position" @click="positionClick">
+        <span class="text"> 我的位置 </span>
         <img src="@/assets/img/home/icon_location.png" alt="" />
       </div>
     </div>
@@ -113,7 +113,15 @@ const searchBtnClick = () => {
         </div>
       </div>
     </div>
-    <van-calendar v-model:show="showCalendar" type="range" color="#ff9854" :round="false" :show-confirm="false" @confirm="onConfirm" :formatter="formatter" />
+    <van-calendar
+      v-model:show="showCalendar"
+      type="range"
+      color="#ff9854"
+      :round="false"
+      :show-confirm="false"
+      @confirm="onConfirm"
+      :formatter="formatter"
+    />
 
     <!-- 价格/人数选择 -->
     <div class="section price-counter bottom-gray-line">

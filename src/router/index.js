@@ -20,6 +20,9 @@ const routes = [
   {
     path: "/message",
     component: () => import("@/views/message/message.vue"),
+    meta: {
+      hideTabBar: true,
+    },
   },
   {
     path: "/city",
